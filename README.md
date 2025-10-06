@@ -44,6 +44,32 @@ const images = [
 ];
 ```
 
+## 🎵 배경음악 추가하기
+
+### 방법 1: YouTube Music 사용 (간편!)
+
+1. YouTube Music에서 원하는 곡의 링크를 복사
+2. 링크에서 **Video ID** 추출:
+   - 예: `https://music.youtube.com/watch?v=Emq17wn71jA`
+   - Video ID: `Emq17wn71jA`
+3. `src/components/BackgroundMusic.tsx` 파일 24번째 줄 수정:
+```typescript
+const YOUTUBE_VIDEO_ID = 'Emq17wn71jA'; // 여기에 video ID 입력
+```
+
+### 방법 2: 로컬 MP3 파일 사용
+
+1. `public/music` 폴더에 음악 파일을 추가
+2. 코드 수정 필요 (MUSIC_GUIDE.md 참고)
+
+📖 **자세한 가이드**: `MUSIC_GUIDE.md` 파일 참고
+
+**기능:**
+- ✨ 페이지 로드 시 자동재생 시도
+- 🔄 반복 재생
+- ▶️ 재생/일시정지 버튼 (우측 하단)
+- 📱 모바일 친화적
+
 ## ✏️ 정보 수정하기
 
 ### 신랑/신부 정보

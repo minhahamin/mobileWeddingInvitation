@@ -1,0 +1,137 @@
+.music-control {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.music-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #c5955f 100%);
+  box-shadow: 0 4px 20px rgba(212, 165, 116, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid white;
+  position: relative;
+  overflow: hidden;
+}
+
+.music-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(212, 165, 116, 0.6);
+}
+
+.music-button:active {
+  transform: scale(0.95);
+}
+
+.music-button.playing {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 165, 116, 0.7), 0 4px 20px rgba(212, 165, 116, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(212, 165, 116, 0), 0 4px 20px rgba(212, 165, 116, 0.4);
+  }
+}
+
+.music-icon-wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-icon {
+  font-size: 1.3rem;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.music-waves {
+  position: absolute;
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+  height: 16px;
+  right: -20px;
+}
+
+.music-waves span {
+  width: 2px;
+  background: white;
+  border-radius: 2px;
+  animation: wave 1s ease-in-out infinite;
+}
+
+.music-waves span:nth-child(1) {
+  height: 8px;
+  animation-delay: 0s;
+}
+
+.music-waves span:nth-child(2) {
+  height: 12px;
+  animation-delay: 0.2s;
+}
+
+.music-waves span:nth-child(3) {
+  height: 6px;
+  animation-delay: 0.4s;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.music-label {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  white-space: nowrap;
+  background: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .music-control {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .music-button {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .music-icon {
+    font-size: 1.2rem;
+  }
+  
+  .music-label {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+}
+
