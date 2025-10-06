@@ -7,6 +7,8 @@ interface YTPlayer {
   playVideo: () => void;
   pauseVideo: () => void;
   destroy: () => void;
+  unMute: () => void;
+  mute: () => void;
 }
 
 interface YTEvent {
@@ -57,16 +59,32 @@ const BackgroundMusic = () => {
         width: '0',
         videoId: YOUTUBE_VIDEO_ID,
         playerVars: {
-          autoplay: 0,
+          autoplay: 1, // 1 = 자동재생, 0 = 수동재생
           loop: 1,
           playlist: YOUTUBE_VIDEO_ID, // loop를 위해 필요
           controls: 0,
           showinfo: 0,
           modestbranding: 1,
+          mute: 1, // 자동재생을 위해 초기에 음소거 (중요!)
         },
         events: {
           onReady: (event: YTEvent) => {
             setPlayer(event.target);
+            
+            // 사용자가 페이지와 상호작용하면 자동으로 음소거 해제
+            const unmuteOnInteraction = () => {
+              event.target.unMute();
+              setIsPlaying(true);
+              // 한 번만 실행되도록 이벤트 제거
+              document.removeEventListener('click', unmuteOnInteraction);
+              document.removeEventListener('scroll', unmuteOnInteraction);
+              document.removeEventListener('touchstart', unmuteOnInteraction);
+            };
+            
+            // 클릭, 스크롤, 터치 시 음소거 해제
+            document.addEventListener('click', unmuteOnInteraction);
+            document.addEventListener('scroll', unmuteOnInteraction);
+            document.addEventListener('touchstart', unmuteOnInteraction);
           },
           onStateChange: (event: YTEvent) => {
             if (event.data === window.YT.PlayerState.PLAYING) {
@@ -86,6 +104,7 @@ const BackgroundMusic = () => {
         player.pauseVideo();
         setIsPlaying(false);
       } else {
+        player.unMute(); // 음소거 해제 (사용자가 클릭했을 때)
         player.playVideo();
         setIsPlaying(true);
       }
