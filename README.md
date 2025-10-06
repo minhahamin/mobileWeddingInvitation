@@ -1,6 +1,7 @@
 # 🎊 모바일 청첩장 (Mobile Wedding Invitation)
 
-React + TypeScript + Vite로 제작한 아름다운 모바일 청첩장입니다.
+React + TypeScript + Vite로 제작한 모바일 청첩장입니다.
+- 배포 : https://mobile-wedding-invitation-pied.vercel.app/
 
 ## 🚀 시작하기
 
