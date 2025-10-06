@@ -114,5 +114,9 @@
   .invitation-text {
     font-size: 0.95rem;
   }
+  
+  .scroll-indicator {
+    bottom: 15px; /* 모바일에서 조금 더 아래로 */
+  }
 }
 
