@@ -1,6 +1,7 @@
 .main-cover {
   background: linear-gradient(135deg, #fefdfb 0%, #f5e6d3 100%);
   position: relative;
+  min-height: 100vh;
 }
 
 .cover-content {
